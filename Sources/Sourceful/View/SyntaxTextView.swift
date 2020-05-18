@@ -73,8 +73,17 @@ open class SyntaxTextView: View {
 
     #endif
 
-    #if os(iOS)
-
+    #if os(macOS)
+    public var tintColor: NSColor! {
+        set {
+            textView.tintColor = newValue
+        }
+        get {
+            return textView.tintColor
+        }
+    }
+    
+    #else
     public var contentInset: UIEdgeInsets = .zero {
         didSet {
             textView.contentInset = contentInset
@@ -85,17 +94,6 @@ open class SyntaxTextView: View {
     open override var tintColor: UIColor! {
         didSet {
 
-        }
-    }
-
-    #else
-
-    public var tintColor: NSColor! {
-        set {
-            textView.tintColor = newValue
-        }
-        get {
-            return textView.tintColor
         }
     }
 
@@ -118,9 +116,7 @@ open class SyntaxTextView: View {
         let layoutManager = SyntaxTextViewLayoutManager()
         #if os(macOS)
         let containerSize = CGSize(width: 0, height: CGFloat.greatestFiniteMagnitude)
-        #endif
-
-        #if os(iOS)
+        #else
         let containerSize = CGSize(width: 0, height: 0)
         #endif
 
@@ -128,7 +124,7 @@ open class SyntaxTextView: View {
         
         textContainer.widthTracksTextView = true
 
-        #if os(iOS)
+        #if !os(macOS)
         textContainer.heightTracksTextView = true
         #endif
         layoutManager.addTextContainer(textContainer)
@@ -147,7 +143,7 @@ open class SyntaxTextView: View {
 
         textView.gutterWidth = 20
 
-        #if os(iOS)
+        #if !os(macOS)
 
         textView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -233,7 +229,7 @@ open class SyntaxTextView: View {
 
         textView.text = ""
 
-        #if os(iOS)
+        #if !os(macOS)
 
         textView.autocapitalizationType = .none
         textView.keyboardType = .default

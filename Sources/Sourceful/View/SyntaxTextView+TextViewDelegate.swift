@@ -185,7 +185,7 @@ extension SyntaxTextView {
 	
 #endif
 
-#if os(iOS)
+#if !os(macOS)
 	
 	extension SyntaxTextView: UITextViewDelegate {
 		

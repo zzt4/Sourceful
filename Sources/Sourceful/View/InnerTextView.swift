@@ -46,7 +46,7 @@ class InnerTextView: TextView {
 		
 	}
 	
-	#if os(iOS)
+	#if !os(macOS)
 	
 	var isCursorFloating = false
 	

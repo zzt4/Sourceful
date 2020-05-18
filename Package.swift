@@ -7,7 +7,8 @@ let package = Package(
     name: "Sourceful",
     platforms: [
         .macOS(SupportedPlatform.MacOSVersion.v10_13),
-        .iOS(SupportedPlatform.IOSVersion.v12)
+        .iOS(SupportedPlatform.IOSVersion.v12),
+        .tvOS(SupportedPlatform.TVOSVersion.v12)
     ],
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
