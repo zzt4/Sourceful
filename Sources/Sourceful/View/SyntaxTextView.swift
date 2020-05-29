@@ -61,7 +61,7 @@ open class SyntaxTextView: View {
 
     public weak var delegate: SyntaxTextViewDelegate? {
         didSet {
-            didUpdateText()
+//            didUpdateText()
         }
     }
 
@@ -344,8 +344,30 @@ open class SyntaxTextView: View {
             textView.backgroundColor = theme.backgroundColor
             textView.theme = theme
             textView.font = theme.font
-
-            didUpdateText()
+            
+            #if os(macOS)
+            self.invalidateCachedTokens()
+            self.textView.invalidateCachedParagraphs()
+            
+            if let delegate = delegate {
+                colorTextView(lexerForSource: { (source) -> Lexer in
+                    return delegate.lexerForSource(source)
+                })
+            }
+            
+            wrapperView.setNeedsDisplay(wrapperView.bounds)
+            self.delegate?.didChangeText(self)
+            #else
+            self.invalidateCachedTokens()
+            self.textView.invalidateCachedParagraphs()
+            textView.setNeedsDisplay()
+            
+            if let delegate = delegate {
+                colorTextView(lexerForSource: { (source) -> Lexer in
+                    return delegate.lexerForSource(source)
+                })
+            }
+            #endif
         }
     }
 
