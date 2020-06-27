@@ -26,9 +26,9 @@ public extension NSAttributedString.Key {
 
 }
 
-class SyntaxTextViewLayoutManager: NSLayoutManager {
+public class SyntaxTextViewLayoutManager: NSLayoutManager {
 	
-	override func drawGlyphs(forGlyphRange glyphsToShow: NSRange, at origin: CGPoint) {
+    public override func drawGlyphs(forGlyphRange glyphsToShow: NSRange, at origin: CGPoint) {
 		
 		#if os(macOS)
 

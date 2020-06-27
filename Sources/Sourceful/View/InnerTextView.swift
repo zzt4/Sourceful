@@ -19,11 +19,11 @@ protocol InnerTextViewDelegate: class {
 	func didUpdateCursorFloatingState()
 }
 
-class InnerTextView: TextView {
+public class InnerTextView: TextView {
 	
 	weak var innerDelegate: InnerTextViewDelegate?
 	
-	var theme: SyntaxColorTheme?
+	public var theme: SyntaxColorTheme?
 	
 	var cachedParagraphs: [Paragraph]?
 	
@@ -35,7 +35,7 @@ class InnerTextView: TextView {
 		gutterWidth = theme?.gutterStyle.minimumWidth ?? 0.0
 	}
 	
-	func updateGutterWidth(for numberOfCharacters: Int) {
+	public func updateGutterWidth(for numberOfCharacters: Int) {
 		
 		let leftInset: CGFloat = 4.0
 		let rightInset: CGFloat = 4.0
@@ -123,7 +123,7 @@ class InnerTextView: TextView {
 	}
 	#endif
 	
-	var gutterWidth: CGFloat {
+	public var gutterWidth: CGFloat {
 		set {
 			
 			#if os(macOS)

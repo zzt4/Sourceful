@@ -53,7 +53,7 @@ open class SyntaxTextView: View {
 
     private var textViewSelectedRangeObserver: NSKeyValueObservation?
 
-    let textView: InnerTextView
+    public let textView: InnerTextView
 
     public var contentTextView: TextView {
         return textView
