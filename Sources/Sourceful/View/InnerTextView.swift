@@ -50,7 +50,7 @@ public class InnerTextView: TextView {
 	
 	var isCursorFloating = false
 	
-	override func beginFloatingCursor(at point: CGPoint) {
+    public override func beginFloatingCursor(at point: CGPoint) {
 		super.beginFloatingCursor(at: point)
 		
 		isCursorFloating = true
@@ -58,7 +58,7 @@ public class InnerTextView: TextView {
 
 	}
 	
-	override func endFloatingCursor() {
+    public override func endFloatingCursor() {
 		super.endFloatingCursor()
 		
 		isCursorFloating = false
@@ -154,7 +154,7 @@ public class InnerTextView: TextView {
 	
 	#if os(iOS)
 	
-	override func caretRect(for position: UITextPosition) -> CGRect {
+    public override func caretRect(for position: UITextPosition) -> CGRect {
 		
 		var superRect = super.caretRect(for: position)
 		
