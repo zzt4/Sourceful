@@ -202,7 +202,9 @@ extension SyntaxTextView {
 		open func textViewDidChange(_ textView: UITextView) {
 			
 			didUpdateText()
-			
+            if let delegate = delegate {
+                delegate.didChangeText(self)
+            }
 		}
 		
 		func didUpdateText() {
@@ -215,9 +217,6 @@ extension SyntaxTextView {
 				colorTextView(lexerForSource: { (source) -> Lexer in
 					return delegate.lexerForSource(source)
 				})
-				
-				delegate.didChangeText(self)
-
 			}
 			
 		}
