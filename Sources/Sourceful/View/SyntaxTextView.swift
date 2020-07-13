@@ -288,6 +288,7 @@ open class SyntaxTextView: View {
             #endif
         }
         set {
+            guard newValue != text else { return }
             #if os(macOS)
             textView.layer?.isOpaque = true
             textView.string = newValue

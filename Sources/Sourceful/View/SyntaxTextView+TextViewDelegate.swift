@@ -200,12 +200,15 @@ extension SyntaxTextView {
 		}
 		
 		open func textViewDidChange(_ textView: UITextView) {
-			
-			didUpdateText()
+			updateAndCallDelegate()
+		}
+        
+        func updateAndCallDelegate() {
+            didUpdateText()
             if let delegate = delegate {
                 delegate.didChangeText(self)
             }
-		}
+        }
 		
 		func didUpdateText() {
 			
@@ -296,7 +299,7 @@ extension SyntaxTextView {
 				if insertingText == "", selectedRange.lowerBound == range.upperBound {
 					textStorage.replaceCharacters(in: range, with: insertingText)
 					
-					didUpdateText()
+                    updateAndCallDelegate()
 					
 					updateSelectedRange(NSRange(location: range.lowerBound, length: 0))
 
@@ -344,7 +347,7 @@ extension SyntaxTextView {
 					
 					textStorage.replaceCharacters(in: range, with: insertingText)
 					
-					didUpdateText()
+                    updateAndCallDelegate()
 					
 					updateSelectedRange(NSRange(location: range.lowerBound + insertingText.count, length: 0))
 
@@ -359,7 +362,7 @@ extension SyntaxTextView {
 
 			textStorage.replaceCharacters(in: selectedRange, with: insertingText)
 			
-			didUpdateText()
+            updateAndCallDelegate()
 			
 			updateSelectedRange(NSRange(location: selectedRange.lowerBound + insertingText.count, length: 0))
 
