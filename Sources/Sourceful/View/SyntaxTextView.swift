@@ -65,9 +65,11 @@ open class SyntaxTextView: View {
         }
     }
     
+    #if os(iOS)
     open override var intrinsicContentSize: CGSize {
         return contentTextView.sizeThatFits(UIView.layoutFittingExpandedSize)
     }
+    #endif
 
     var ignoreSelectionChange = false
 

@@ -158,6 +158,13 @@ extension SyntaxTextView {
 			didUpdateText()
 			
 		}
+        
+        func updateAndCallDelegate() {
+            didUpdateText()
+            if let delegate = delegate {
+                delegate.didChangeText(self)
+            }
+        }
 		
 		func didUpdateText() {
 			
