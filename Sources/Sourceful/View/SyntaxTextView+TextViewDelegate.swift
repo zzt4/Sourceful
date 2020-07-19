@@ -155,15 +155,13 @@ extension SyntaxTextView {
 				return
 			}
 			
-			didUpdateText()
+			updateAndCallDelegate()
 			
 		}
         
         func updateAndCallDelegate() {
             didUpdateText()
-            if let delegate = delegate {
-                delegate.didChangeText(self)
-            }
+            delegate?.didChangeText(self)
         }
 		
 		func didUpdateText() {
@@ -178,8 +176,7 @@ extension SyntaxTextView {
 			}
 			
 			wrapperView.setNeedsDisplay(wrapperView.bounds)
-			self.delegate?.didChangeText(self)
-			
+            
 		}
 		
 		open func textViewDidChangeSelection(_ notification: Notification) {
@@ -212,9 +209,7 @@ extension SyntaxTextView {
         
         func updateAndCallDelegate() {
             didUpdateText()
-            if let delegate = delegate {
-                delegate.didChangeText(self)
-            }
+            delegate?.didChangeText(self)
         }
 		
 		func didUpdateText() {

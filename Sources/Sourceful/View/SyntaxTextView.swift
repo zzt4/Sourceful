@@ -363,7 +363,7 @@ open class SyntaxTextView: View {
             }
             
             wrapperView.setNeedsDisplay(wrapperView.bounds)
-            self.delegate?.didChangeText(self)
+//            self.delegate?.didChangeText(self)
             #else
             self.invalidateCachedTokens()
             self.textView.invalidateCachedParagraphs()
